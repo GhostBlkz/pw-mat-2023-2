@@ -50,7 +50,8 @@
 
                 const resultado = valor / cotacao
 
-                resultRef.current.textContent = `Valor convertido: $${resultado.toFixed(2)}`
+                resultRef.current.textContent = `Valor convertido: ${resultado.toLocaleString('en-US', 
+                {style: 'currency', currency: 'USD'})} Dólares`
             }
             return <>
                 <h1>Conversor Real para dolar</h1>
