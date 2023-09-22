@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo do Índice de Massa Corporal (IMC)</title>
+</head>
+
+<body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function Form() {
+
+      const pesoRef = React.useRef()
+      const alturaRef = React.useRef()
+      const resulRef = React.useRef()
+
+      let peso
+      let altura
+
+      function handleChange(event) {
+        peso = pesoRef.current.value
+        altura = alturaRef.current.value
+
+        const resultado = peso / (altura * altura)
+        resultRef.current.textContent = `Seu IMC é de ${resultado.toLocaleString('pt-br', { 
+          minimumFractionDigits: 4, 
+          maximumFractionDigits: 4 
+        })}`
+
+      }
+      return<>
+        
+      <h1>Cálculo do Índice de Massa Corporal</h1>
+        <form>
+          <div>
+            <label>
+              <span>Peso:</span><br />
+                <input type="number" ref={pesoRef} onChange={handleChange} />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <span>Altura:</span><br />
+                <input type="number" ref={alturaRef} onChange={handleChange}/>
+            </label>
+          </div>
+
+          <div ref={resulRef}></div>
+
+        </form>
+      </>    
+
+
+        }
+
+          const root = ReactDOM.createRoot(document.getElementById('root'))
+          root.render(<Form />)
+
+
+  </script>
+
+
+</body>
+
+
+</html>
