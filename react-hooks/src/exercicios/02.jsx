@@ -40,9 +40,9 @@ function Greeting({initialName = ''}) {
     // no localStorage
     window.localStorage.setItem('name', name)
     console.count('Executou useEffect()')
-  }, [name])// [] é o VETOR DE DEPENDENCIAS do useEffect()
-  //dentro di vetor de dependencias, colocamos as variaveis de estadi
-  //que, quando forem atualizadas, disparam useEffect()
+  }, [name]) // [] é o VETOR DE DEPENDÊNCIAS do useEffect
+  // Dentro do vetor de dependências, colocamos as variáveis de estado
+  // que, quando forem atualizadas, disparam o useEffect
 
   function handleChange(event) {
     setName(event.target.value)
@@ -65,7 +65,7 @@ function Greeting({initialName = ''}) {
             onClick={() => setTheme('darkTheme')}
           />&nbsp;Escuro
         </fieldset>
-        <label htmlFor="name">Nome: </label>
+        <label htmlFor="name">Name: </label>
         <input value={name} onChange={handleChange} id="name" />
       </form>
       {name ? <strong>Olá {name}</strong> : 'Por favor, informe seu nome'}
